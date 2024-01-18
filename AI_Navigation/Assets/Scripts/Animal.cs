@@ -1,11 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 // Enumeration to represent the states of the animal.
 public enum AnimalState
 {
-    Idle, Moving
+    Idle, Moving, Chase
 }
 
 // Animal class responsible for handling the behavior of animals in the game.
@@ -21,6 +22,11 @@ public class Animal : MonoBehaviour
 
     [Header("Idle")]
     [SerializeField] private float idleTime = 5f;         // Time the animal stays idle.
+
+    [Header("Chase")] [SerializeField] private float runSpeed = 8f;
+
+    [Header("Attributes")] 
+    [SerializeField] private int health = 10;
 
     protected NavMeshAgent navMeshAgent;                  // Reference to the NavMeshAgent component.
     protected AnimalState currentState = AnimalState.Idle; // Current state of the animal.
@@ -52,23 +58,41 @@ public class Animal : MonoBehaviour
             case AnimalState.Moving:
                 HandleMovingState();
                 break;
+            case AnimalState.Chase:
+                HandleChaseState();
+                break;
         }
     }
 
     // Get a random valid NavMesh position within a specified distance from a given origin.
+
     protected Vector3 GetRandomNavMeshPosition(Vector3 origin, float distance)
     {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
-        randomDirection += origin;
-
-        // Check if the random direction is a valid position on the NavMesh.
-        if (NavMesh.SamplePosition(randomDirection, out var navMeshHit, distance, NavMesh.AllAreas))
+        for (int i = 0; i < 5; i++)
         {
-            return navMeshHit.position;
-        }
+            Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
+            randomDirection += origin;
 
-        // If not valid, recursively try again.
-        return GetRandomNavMeshPosition(origin, distance);
+            // Check if the random direction is a valid position on the NavMesh.
+            if (NavMesh.SamplePosition(randomDirection, out var navMeshHit, distance, NavMesh.AllAreas))
+            {
+                return navMeshHit.position;
+            }
+        }
+        
+        // If no position found return origin.
+        return origin;
+    }
+
+
+    protected virtual void CheckChaseConditions()
+    {
+        
+    }
+    
+    protected virtual void HandleChaseState()
+    {
+        StopAllCoroutines();
     }
 
     // Method to handle the Idle state of the animal.
@@ -98,7 +122,7 @@ public class Animal : MonoBehaviour
     private IEnumerator WaitToReachDestination()
     {
         float startTime = Time.time;
-        while (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
+        while (navMeshAgent.pathPending || navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && navMeshAgent.isActiveAndEnabled)
         {
             // If the animal is moving for too long, reset its path and change state to Idle.
             if (Time.time - startTime > maxWalkTime)
@@ -107,6 +131,9 @@ public class Animal : MonoBehaviour
                 SetState(AnimalState.Idle);
                 yield break;
             }
+            
+            // While moving predators will look for other prey animals to hunt. 
+            CheckChaseConditions();
             yield return null;
         }
 
@@ -129,6 +156,25 @@ public class Animal : MonoBehaviour
     // Method called when the state of the animal changes.
     protected virtual void OnStateChanged(AnimalState newState)
     {
+        if (newState == AnimalState.Moving)
+            navMeshAgent.speed = walkSpeed;
+
+        if (newState == AnimalState.Chase)
+            navMeshAgent.speed = runSpeed;
+        
         UpdateState();
     }
-}
+
+    public virtual void ReceiveDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+            Die();
+    }
+
+    protected virtual void Die()
+    {
+        StopAllCoroutines();
+        Destroy(gameObject);
+    }
+} // class 

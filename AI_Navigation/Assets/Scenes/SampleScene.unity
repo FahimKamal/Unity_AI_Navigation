@@ -688,6 +688,8 @@ MonoBehaviour:
   walkSpeed: 50
   maxWalkTime: 6
   idleTime: 3
+  runSpeed: 8
+  health: 10
 --- !u!195 &730594428
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1214,6 +1216,8 @@ MonoBehaviour:
   walkSpeed: 50
   maxWalkTime: 6
   idleTime: 3
+  runSpeed: 8
+  health: 10
 --- !u!1 &1552784572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1252,8 @@ MonoBehaviour:
   walkSpeed: 50
   maxWalkTime: 6
   idleTime: 3
+  runSpeed: 8
+  health: 10
 --- !u!195 &1552784574
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1773,6 +1779,8 @@ MonoBehaviour:
   walkSpeed: 50
   maxWalkTime: 6
   idleTime: 3
+  runSpeed: 8
+  health: 10
 --- !u!195 &2035355638
 NavMeshAgent:
   m_ObjectHideFlags: 0
