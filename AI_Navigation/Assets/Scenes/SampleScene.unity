@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 71745441}
   - component: {fileID: 71745440}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,7 +198,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 29bf48ca9ba2a814ca4109496674bea7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -757,6 +757,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3102f81d2e4c3bc49a788c8afd2a4d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wonderDistance: 50
+  walkSpeed: 50
+  maxWalkTime: 6
+  idleTime: 5
 --- !u!1 &1744063741
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +774,7 @@ GameObject:
   - component: {fileID: 1744063744}
   - component: {fileID: 1744063743}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -832,7 +836,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4b212c2804be26d40b0c747cb944c7e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
