@@ -664,7 +664,8 @@ GameObject:
   m_Component:
   - component: {fileID: 730594429}
   - component: {fileID: 730594428}
-  - component: {fileID: 730594427}
+  - component: {fileID: 730594431}
+  - component: {fileID: 730594430}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -672,24 +673,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &730594427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730594426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3102f81d2e4c3bc49a788c8afd2a4d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wonderDistance: 50
-  walkSpeed: 50
-  maxWalkTime: 6
-  idleTime: 3
-  runSpeed: 8
-  health: 10
 --- !u!195 &730594428
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -728,6 +711,47 @@ Transform:
   - {fileID: 1654250897}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &730594430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730594426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c04ae520e4d198499c1788f697344fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wonderDistance: 50
+  walkSpeed: 50
+  maxWalkTime: 6
+  idleTime: 5
+  runSpeed: 8
+  health: 10
+  detectionRange: 10
+  escapeMaxDistance: 80
+--- !u!65 &730594431
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730594426}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &768739421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1154,6 +1178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1074375865}
   - component: {fileID: 1074375864}
+  - component: {fileID: 1074375867}
   - component: {fileID: 1074375866}
   m_Layer: 0
   m_Name: Sheep
@@ -1209,15 +1234,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1074375863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3102f81d2e4c3bc49a788c8afd2a4d97, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c04ae520e4d198499c1788f697344fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wonderDistance: 50
   walkSpeed: 50
   maxWalkTime: 6
-  idleTime: 3
+  idleTime: 5
   runSpeed: 8
   health: 10
+  detectionRange: 10
+  escapeMaxDistance: 80
+--- !u!65 &1074375867
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074375863}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1552784572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1552784575}
   - component: {fileID: 1552784574}
-  - component: {fileID: 1552784573}
+  - component: {fileID: 1552784577}
+  - component: {fileID: 1552784576}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -1236,24 +1285,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1552784573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552784572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3102f81d2e4c3bc49a788c8afd2a4d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wonderDistance: 50
-  walkSpeed: 50
-  maxWalkTime: 6
-  idleTime: 3
-  runSpeed: 8
-  health: 10
 --- !u!195 &1552784574
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1292,6 +1323,47 @@ Transform:
   - {fileID: 458484689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1552784576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552784572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c04ae520e4d198499c1788f697344fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wonderDistance: 50
+  walkSpeed: 50
+  maxWalkTime: 6
+  idleTime: 5
+  runSpeed: 8
+  health: 10
+  detectionRange: 10
+  escapeMaxDistance: 80
+--- !u!65 &1552784577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552784572}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1654250896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1827,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2035355639}
   - component: {fileID: 2035355638}
-  - component: {fileID: 2035355637}
+  - component: {fileID: 2035355641}
+  - component: {fileID: 2035355640}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -1763,24 +1836,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2035355637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035355636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3102f81d2e4c3bc49a788c8afd2a4d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wonderDistance: 50
-  walkSpeed: 50
-  maxWalkTime: 6
-  idleTime: 3
-  runSpeed: 8
-  health: 10
 --- !u!195 &2035355638
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1812,13 +1867,56 @@ Transform:
   m_GameObject: {fileID: 2035355636}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.140015, y: 3.5, z: 590.8}
+  m_LocalPosition: {x: 40.86, y: 3.5, z: 631.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 768739422}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2035355640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035355636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c87184ab77a234ab011595d193dfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wonderDistance: 50
+  walkSpeed: 50
+  maxWalkTime: 6
+  idleTime: 5
+  runSpeed: 8
+  health: 10
+  detectionRange: 20
+  maxChaseTime: 10
+  biteDamage: 3
+  biteCooldown: 2
+--- !u!65 &2035355641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035355636}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
