@@ -36,6 +36,7 @@ public class Pray : Animal
         // Predator out of range, run to our final location and go back to idle. 
         if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
         {
+            SetState(AnimalState.Idle);
             yield return null;
         }
         
