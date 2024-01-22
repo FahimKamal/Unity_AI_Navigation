@@ -29,6 +29,7 @@ public class Animal : MonoBehaviour
     [SerializeField] private int health = 10;
 
     protected NavMeshAgent navMeshAgent;                  // Reference to the NavMeshAgent component.
+    protected Animator animator;                          // Reference to the Animator component.
     protected AnimalState currentState = AnimalState.Idle; // Current state of the animal.
 
     // Called when the script is first run.
@@ -40,6 +41,7 @@ public class Animal : MonoBehaviour
     // Initialization method for the animal.
     protected virtual void InitializeAnimal()
     {
+        animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = walkSpeed;
 
@@ -156,6 +158,7 @@ public class Animal : MonoBehaviour
     // Method called when the state of the animal changes.
     protected virtual void OnStateChanged(AnimalState newState)
     {
+        animator?.CrossFadeInFixedTime(newState.ToString(), 0.5f);
         if (newState == AnimalState.Moving)
             navMeshAgent.speed = walkSpeed;
 
@@ -177,4 +180,5 @@ public class Animal : MonoBehaviour
         StopAllCoroutines();
         Destroy(gameObject);
     }
+    
 } // class 

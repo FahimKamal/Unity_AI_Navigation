@@ -84,7 +84,7 @@ public class Predator : Animal
     {
         navMeshAgent.ResetPath();
         _currentChaseTarget = null;
-        SetState(AnimalState.Moving);
+        SetState(AnimalState.Idle);
     }
 
     private void OnDrawGizmos()
