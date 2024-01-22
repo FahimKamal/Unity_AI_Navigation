@@ -8,7 +8,7 @@ public class Predator : Animal
     [SerializeField] private float detectionRange = 20f;
     [SerializeField] private float maxChaseTime = 10f;
     [SerializeField] private int biteDamage = 3;
-    [SerializeField] private float biteCooldown = 2f;
+    [SerializeField] private float biteCooldown = 1f;
 
     private Pray _currentChaseTarget;
 
@@ -47,8 +47,10 @@ public class Predator : Animal
 
             StartCoroutine(ChasePray());
         }
-        
-        SetState(AnimalState.Idle);
+        else
+        {
+            SetState(AnimalState.Idle);
+        }
     }
 
     private IEnumerator ChasePray()
@@ -82,7 +84,7 @@ public class Predator : Animal
     {
         navMeshAgent.ResetPath();
         _currentChaseTarget = null;
-        SetState(AnimalState.Idle);
+        SetState(AnimalState.Moving);
     }
 
     private void OnDrawGizmos()

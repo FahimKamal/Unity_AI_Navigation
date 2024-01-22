@@ -17,7 +17,7 @@ public class Pray : Animal
         StartCoroutine(RunFromPredator());
     }
 
-    private IEnumerator RunFromPredator()
+    private IEnumerator RunFromPredator( )
     {
         // Wait until the predator is within detection range.
         while (_currentPredator == null || Vector3.Distance(transform.position, _currentPredator.transform.position) > detectionRange)
@@ -49,7 +49,7 @@ public class Pray : Animal
             if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
             {
                 var runDirection = transform.position - _currentPredator.transform.position;
-                var escapeDestination = transform.position + runDirection.normalized * escapeMaxDistance;
+                var escapeDestination = transform.position + runDirection.normalized * (escapeMaxDistance * 2);
                 navMeshAgent.SetDestination(GetRandomNavMeshPosition(escapeDestination, escapeMaxDistance));
                 
             }
