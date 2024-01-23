@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 // Enumeration to represent the states of the animal.
@@ -27,6 +30,7 @@ public class Animal : MonoBehaviour
 
     [Header("Attributes")] 
     [SerializeField] private int health = 10;
+    [SerializeField] private List<VisualRandomisation> visualRandomization;
 
     protected NavMeshAgent navMeshAgent;                  // Reference to the NavMeshAgent component.
     protected Animator animator;                          // Reference to the Animator component.
@@ -47,6 +51,22 @@ public class Animal : MonoBehaviour
 
         currentState = AnimalState.Idle;
         UpdateState();
+
+        GenerateVisualRandomization();
+    }
+
+
+    protected virtual void GenerateVisualRandomization()
+    {
+        foreach (var randomisation in visualRandomization)
+        {
+            var randomMaterial = Random.Range(0, randomisation.allMaterials.Count);
+
+            foreach (var subMeshRenderer in randomisation.allMeshRenderers)
+            {
+                subMeshRenderer.material = randomisation.allMaterials[randomMaterial];
+            }
+        }
     }
 
     // Method to update the state of the animal based on the current state.
@@ -182,3 +202,10 @@ public class Animal : MonoBehaviour
     }
     
 } // class 
+
+[Serializable]
+public class VisualRandomisation
+{
+    public List<MeshRenderer> allMeshRenderers;
+    public List<Material> allMaterials;
+}
